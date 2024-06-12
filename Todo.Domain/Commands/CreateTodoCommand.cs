@@ -9,16 +9,16 @@ public class CreateTodoCommand : Notifiable, ICommand
 {
     public CreateTodoCommand() { }
 
-    public CreateTodoCommand(string title, DateTime date, string user)
+    public CreateTodoCommand(string title, string user, DateTime date)
     {
         Title = title;
-        Date = date;
         User = user;
+        Date = date;
     }
 
     public string Title { get; set; }        
-    public DateTime Date { get; set; }
     public string User { get; set; }
+    public DateTime Date { get; set; }
 
     public void Validate()
     {

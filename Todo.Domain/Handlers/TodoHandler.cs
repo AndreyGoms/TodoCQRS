@@ -28,7 +28,6 @@ public class TodoHandler :
 
         if(command.Invalid)
           return new GenericCommandResult(false, "Oops, parece ue sua tarefa esta errada", command.Notifications);    
-
         
         // Gera o todo Item
         var todo = new TodoItem(command.Title, command.User, command.Date);

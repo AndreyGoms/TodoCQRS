@@ -17,7 +17,7 @@ public static class TodoQueries
     }
 
     public static Expression<Func<TodoItem, bool>> GetAllUndone(string user) 
-    {
+    {       
         return x => x.User == user && x.Done == false;
     }
 

@@ -1,4 +1,8 @@
+using Microsoft.EntityFrameworkCore;
+using Todo.Domain.Handlers;
 using Todo.Domain.Infra.Contexts;
+using Todo.Domain.Infra.Repositories;
+using Todo.Domain.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,13 +21,20 @@ builder.Services.AddTransient<TodoHandler, TodoHandler>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
+
+app.UseRouting();
+
+//UseCors -> permitir acesso localhost a nossa aplicação
+app.UseCors(x => x
+    .AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader());
+
 app.MapControllers();
 
 app.Run();

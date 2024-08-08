@@ -52,10 +52,10 @@ public class TodoHandler :
           return new GenericCommandResult(false, "Oops, parece ue sua tarefa esta errada", command.Notifications);    
         
         // Recupera o todo Item (rehidratacao, nunca confia nas infos que estao em tela, sempre pegar o valor mais att)
-        var todo = _repository.GetById(command.Id, command.User);
+        var todo = _repository.GetById(command.Id, command.User); // Pegou versao do banco
 
         //Altera titulo
-        todo.UpdateTitle(command.Title);
+        todo.UpdateTitle(command.Title); // criou uma copia com o titulo novo
 
         // Salvar no banco
         _repository.Update(todo);

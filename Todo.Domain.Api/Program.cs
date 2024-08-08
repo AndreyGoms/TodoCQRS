@@ -11,8 +11,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
-builder.Services.AddDbContext<DataContext>(opt => opt.UseInMemoryDatabase("Database"));
-//builder.Services.AddDbContext<DataContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("connectionString")));
+
+//builder.Services.AddDbContext<DataContext>(opt => opt.UseInMemoryDatabase("Database"));
+builder.Services.AddDbContext<DataContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("connectionString")));
 
 builder.Services.AddTransient<ITodoRepository, TodoRepository>();
 builder.Services.AddTransient<TodoHandler, TodoHandler>();
